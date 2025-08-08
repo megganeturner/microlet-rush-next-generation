@@ -77,6 +77,7 @@ class GameScene extends Phaser.Scene {
     // HUD init
     GameEvents.emit('score:update', Math.floor(this.score));
     GameEvents.emit('fuel:update', Math.floor(this.energy));
+    GameEvents.emit('astronauts:update', this.astronautsSaved);
   }
 
   _setupSwipe() {

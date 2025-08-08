@@ -41,8 +41,8 @@ You can use any local HTTP server. The key is to avoid opening the `index.html` 
 
 ### Controls
 - **Desktop**: 
-  - `A` or `←` - Move left
-  - `D` or `→` - Move right  
+  - `A` or `←` - Move left (up)
+  - `D` or `→` - Move right  (down)
   - `P` - Pause/Resume
 - **Mobile**: 
   - Swipe left/right to change lanes

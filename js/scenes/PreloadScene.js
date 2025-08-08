@@ -43,9 +43,8 @@ class PreloadScene extends Phaser.Scene {
     const shipKeys = ['ship_esperansa', 'ship_kuitadu', 'ship_realize_dream', 'ship_silver_omega'];
     shipKeys.forEach((k) => this._makeTransparentWhite(k, k + '_cut'));
 
-    // Start core scenes
-    this.scene.start('GameScene');
-    this.scene.launch('UIScene');
+    // Start instruction scene
+    this.scene.start('InstructionScene');
   }
 
   _makeTransparentWhite(srcKey, dstKey) {

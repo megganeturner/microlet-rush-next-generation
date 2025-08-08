@@ -10,7 +10,7 @@
       default: 'arcade',
       arcade: { gravity: { y: 0 }, debug: window.location.search.includes('debug=1') },
     },
-    scene: [PreloadScene, GameScene, UIScene],
+    scene: [PreloadScene, InstructionScene, GameScene, UIScene],
   };
 
   window.addEventListener('load', function () {
