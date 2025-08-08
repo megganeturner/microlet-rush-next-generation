@@ -10,7 +10,7 @@ class InstructionScene extends Phaser.Scene {
     this.add.rectangle(width / 2, height / 2, width, height, 0x000011);
     
     // Title
-    this.add.text(width / 2, 50, 'MICROLET RUSH 2.0', {
+    this.add.text(width / 2, 50, 'MICROLET RUSH: The Next Generation', {
       fontFamily: 'monospace',
       fontSize: '28px',
       color: '#ffffff',

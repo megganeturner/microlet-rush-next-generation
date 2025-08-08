@@ -4,6 +4,7 @@ class UIScene extends Phaser.Scene {
     this.scoreText = null;
     this.fuelText = null;
     this.astronautsText = null;
+    this.highScoreText = null;
     this.overlay = null;
     this.overlayText = null;
     this.keyP = null;
@@ -21,6 +22,12 @@ class UIScene extends Phaser.Scene {
 
     this.astronautsText = this.add.text(this.scale.width - pad, pad + 30, 'Lives Saved: 0', {
       fontFamily: 'monospace', fontSize: '16px', color: '#ffd64d'
+    }).setOrigin(1, 0).setDepth(1000);
+
+    // High score display
+    const highScore = localStorage.getItem('microlet_rush_high_score') || 0;
+    this.highScoreText = this.add.text(this.scale.width - pad, pad + 55, `Best: ${highScore}`, {
+      fontFamily: 'monospace', fontSize: '14px', color: '#80ffe6'
     }).setOrigin(1, 0).setDepth(1000);
 
     // Pause overlay
@@ -52,6 +59,9 @@ class UIScene extends Phaser.Scene {
     if (this.scoreText) this.scoreText.setText('Score: 0');
     if (this.fuelText) this.fuelText.setText('Fuel: 100');
     if (this.astronautsText) this.astronautsText.setText('Lives Saved: 0');
+    // Update high score display after potential new record
+    const highScore = localStorage.getItem('microlet_rush_high_score') || 0;
+    if (this.highScoreText) this.highScoreText.setText(`Best: ${highScore}`);
   }
 
   update() {

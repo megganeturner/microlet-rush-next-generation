@@ -126,7 +126,7 @@ class GameScene extends Phaser.Scene {
     if (!pickup.active) return;
     const key = pickup.texture.key;
     if (key === 'fuel_cell') {
-      this.energy = Math.min(GameConfig.energyMax, this.energy + 25);
+      this.energy += 25; // Unlimited fuel collection
     } else if (key === 'astronaut') {
       this.score += 50;
       this.astronautsSaved++;
@@ -142,6 +142,15 @@ class GameScene extends Phaser.Scene {
   }
 
   _onCrash() {
+    // Save high score before restarting
+    const currentScore = Math.floor(this.score);
+    const highScore = localStorage.getItem('microlet_rush_high_score') || 0;
+    
+    if (currentScore > highScore) {
+      localStorage.setItem('microlet_rush_high_score', currentScore);
+      console.log('New high score:', currentScore);
+    }
+    
     // Simple game-over: restart the scene
     this.cameras.main.shake(200, 0.01);
     this.scene.restart();
