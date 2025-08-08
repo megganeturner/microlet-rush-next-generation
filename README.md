@@ -1,40 +1,153 @@
-# Microlet Rush: Timor Streets
+# Microlet Rush 2.0 - Space Runner
 
-A 2D pixel art game where you drive decorated Timorese microlets through a side-scrolling environment. Features lateral and depth movement on a continuous scrolling road with vibrant pixel art inspired by Timor-Leste's colorful minibuses.
+An endless space runner game built with Phaser 3.60 where you pilot a microlet-turned-spaceship through cosmic lanes, dodging asteroids and planets while collecting stars, fuel cells, and rescuing stranded astronauts.
 
-## How to Run
+## 🚀 Quick Start
 
-1. Clone or download this repository
-2. Start any local web server in the project directory
-3. Open the game in your browser
+### Prerequisites
+- A modern web browser (Chrome, Firefox, Safari, Edge)
+- Python 3 (for local development server) or Node.js
 
-### Quick Start Examples:
+### Running the Game
 
-**Python 3:**
+#### Option 1: Python (Recommended)
 ```bash
-python -m http.server 8000
+# Navigate to the project directory
+cd /path/to/microlet-rush-2.0
+
+# Start a local server
+python3 -m http.server --directory . 5173
+
+# Open your browser to
+# http://localhost:5173
 ```
 
-**Node.js (with http-server):**
+#### Option 2: Node.js
 ```bash
-npx http-server
+# Install serve globally (if not already installed)
+npm install -g serve
+
+# Start the server
+npx serve . -l 5173
+
+# Open your browser to
+# http://localhost:5173
 ```
 
-**PHP:**
-```bash
-php -S localhost:8000
+#### Option 3: Any HTTP Server
+You can use any local HTTP server. The key is to avoid opening the `index.html` file directly in the browser (file:// protocol) as this will cause CORS issues with asset loading.
+
+## 🎮 Gameplay
+
+### Controls
+- **Desktop**: 
+  - `A` or `←` - Move left
+  - `D` or `→` - Move right  
+  - `P` - Pause/Resume
+- **Mobile**: 
+  - Swipe left/right to change lanes
+  - Tap top-right area to pause
+
+### Objective
+Navigate through three space lanes, avoiding obstacles while collecting resources to extend your journey and maximize your score.
+
+### Game Elements
+
+#### Obstacles
+- **Asteroids**: Small rocky obstacles
+- **Planets**: Larger celestial bodies to avoid
+- **Comets**: Fast-moving space debris (advanced)
+
+#### Pickups
+- **Stars** ⭐: +10 points each
+- **Fuel Cells** 🔋: +25 energy (restores ship power)
+- **Astronauts** 👨‍🚀: +50 points + temporary 1.5x score multiplier for 10 seconds
+
+#### Scoring
+- **Distance**: Score increases based on distance traveled
+- **Multiplier**: Astronaut rescues provide temporary score boost
+- **Lives Saved**: Track how many astronauts you've rescued
+
+### Game Over
+- Colliding with any obstacle
+- Running out of energy (fuel)
+
+## 🛠️ Development
+
+### Project Structure
+```
+microlet-rush-2.0/
+├── index.html              # Main HTML file
+├── design.md               # Game design specification
+├── README.md               # This file
+├── js/
+│   ├── config.js           # Global configuration
+│   ├── main.js             # Phaser game initialization
+│   ├── scenes/
+│   │   ├── PreloadScene.js # Asset loading
+│   │   ├── GameScene.js    # Main gameplay
+│   │   └── UIScene.js      # HUD and pause overlay
+│   └── systems/
+│       ├── LaneManager.js  # Lane positioning logic
+│       └── ParallaxSpace.js # Starfield and background
+└── sprites/
+    ├── microlets/          # Player ship sprites
+    ├── space/              # Space-themed assets (SVG)
+    └── background/         # Background textures
 ```
 
-Then open `http://localhost:8000` in your browser.
+### Key Features
+- **Responsive Design**: Works on desktop and mobile
+- **Parallax Background**: Dynamic starfield with multiple layers
+- **Particle Effects**: Thruster particles and starfield
+- **Collision Detection**: Arcade physics for precise gameplay
+- **Progressive Difficulty**: Speed and spawn rates increase over time
+- **Pause System**: Full game pause with overlay
 
-## Controls
+### Debug Mode
+Add `?debug=1` to the URL to enable physics debug overlays:
+```
+http://localhost:5173?debug=1
+```
 
-- Arrow keys or WASD: Move the microlet
-- Space: Action (jump/honk)
+### Asset Processing
+The game automatically processes microlet sprites to remove white/cream backgrounds for better visual integration with the space theme.
 
-## Game Features
+## 🎨 Customization
 
-- Select from 4 different Timorese microlets
-- Parallax scrolling background with Timor-Leste scenery
-- Collect coins and avoid obstacles
-- Multiple background layers for depth perception 
+### Modifying Assets
+- **Player Ships**: Replace files in `sprites/microlets/`
+- **Space Assets**: Edit SVG files in `sprites/space/`
+- **Backgrounds**: Modify files in `sprites/background/`
+
+### Adjusting Gameplay
+Key parameters can be modified in `js/config.js`:
+- `baseWorldSpeed`: Initial scroll speed
+- `worldSpeedRampPerSecond`: How fast speed increases
+- `energyMax`: Maximum fuel capacity
+- `energyDrainPerSecond`: Fuel consumption rate
+
+## 🚀 Future Enhancements
+
+Planned features from the design document:
+- Menu scene with ship selection
+- Comet hazards with particle trails
+- Black hole gravity wells
+- Audio system with SFX and music
+- Enhanced visual effects and polish
+
+## 📝 License
+
+This project is open source. Feel free to modify and distribute according to your needs.
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Test thoroughly
+5. Submit a pull request
+
+---
+
+**Enjoy piloting your microlet through the cosmos!** 🌌
